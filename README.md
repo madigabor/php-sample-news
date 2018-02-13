@@ -5,7 +5,7 @@ Never use in production, this a sample code only.
 
 # How to use
 
- 1. Create a MySQL database with a certain name
+ 1. Create a MySQL database with a name: "php_news"
  2. Edit the config.php file: servername, username, password, database name.
  3. Import create.sql to MySQL
  4. Run index.php
