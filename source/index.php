@@ -20,13 +20,15 @@
 	$connection = new mysqli($servername, $username, $password, $dbname);
 
 	// Check connection
+	if ($connection->connect_error) {
+		die("Connection failed: " . $connection->connect_error);
+	} 
+	
 	if (!$connection->set_charset("utf8")) {
 		printf("Error loading character set utf8: %s\n", $connection->error);
 		exit();
 	}
-	if ($connection->connect_error) {
-		die("Connection failed: " . $connection->connect_error);
-	} 
+	
 
 	$sql = "SELECT id, title, content FROM news";
 	$result = $connection->query($sql);
