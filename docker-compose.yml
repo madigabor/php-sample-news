@@ -1,0 +1,16 @@
+version: '2'
+services:
+  mysql:
+    restart: always
+    build: ./mysql
+  php:
+    restart: always
+    build: ./php
+    depends_on:
+      - "mysql"
+    links:
+      - "mysql"
+    ports:
+      - "80:80"
+    volumes:
+      - ./php/src:/var/www/html

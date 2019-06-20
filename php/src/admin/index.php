@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Sample PHP News App</title>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 <div class="container">
@@ -14,7 +14,7 @@
 	</nav>
 <?php
 	// Config parameters
-	require_once("config.php");
+	require_once("../config.php");
 
 	// Create connection
 	$connection = new mysqli($servername, $username, $password, $dbname);
@@ -43,6 +43,8 @@
 				<h1>". $row["title"]. "</h1>
 			  </div>
 			  <p class=\"lead\">" . $row["content"] . "</p>
+			  <a class=\"btn btn-primary btn-sm\" href=\"edit.php?id=". $row["id"] ."\">&#9998; Edit</a>
+			  <hr/>
 			</div>";
  
 		}
@@ -54,7 +56,7 @@
 ?> 
 	<footer class="footer">
       <div class="container">
-        <span class="text-muted">2018.</span>
+        <span class="text-muted">Copyright &copy; <?php echo date('Y');?></span>
       </div>
     </footer>
 </div>	
