@@ -9,6 +9,8 @@ Never use in production, this a sample code only.
  2. Edit the config.php file: servername, username, password, database name.
  3. Import create.sql to MySQL
  4. Copy php/src folder to a web server folder (eg. /var/www/html) and run index.php
+ 5. Admin is available at "localhost/admin" - user: admin, password: admin
+
 
 ![index.php running in a Browser](intro.png)
 
