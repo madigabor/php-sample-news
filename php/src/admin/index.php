@@ -8,9 +8,12 @@
 <body>
 <div class="container">
 	<nav class="navbar navbar-dark bg-primary">
-	  <a class="navbar-brand" href="#">
-		Latest News
+	  <a class="navbar-brand" href="/admin">
+		Administrator
 	  </a>
+
+	  <a class="btn btn-light btn-sm" href="add.php">&plus; Add news</a>
+
 	</nav>
 <?php
 	// Config parameters
@@ -29,6 +32,13 @@
 		exit();
 	}
 	
+	if (isset($_GET['id']) && isset($_GET['delete'])) {
+        $sql = "DELETE FROM news  WHERE id=".$_GET[id];
+        $result = $connection->query($sql);
+        echo "<div class=\"alert alert-success\" role=\"alert\">
+            Deleted successfully.
+      </div>";
+    }
 
 	$sql = "SELECT id, title, content FROM news";
 	$result = $connection->query($sql);
@@ -44,6 +54,7 @@
 			  </div>
 			  <p class=\"lead\">" . $row["content"] . "</p>
 			  <a class=\"btn btn-primary btn-sm\" href=\"edit.php?id=". $row["id"] ."\">&#9998; Edit</a>
+			  <a onclick=\"return confirm('Are you sure?')\" class=\"btn btn-primary btn-sm\" href=\"index.php?delete=true&id=". $row["id"] ."\">&#128465; Delete</a>
 			  <hr/>
 			</div>";
  

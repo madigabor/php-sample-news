@@ -15,7 +15,7 @@
 <div class="container">
 	<nav class="navbar navbar-dark bg-primary">
 	  <a class="navbar-brand" href="/admin">
-	  	Administrator
+        Administrator
 	  </a>
 	</nav>
 <?php
@@ -34,42 +34,34 @@
 		printf("Error loading character set utf8: %s\n", $connection->error);
 		exit();
 	}
-	
+    
 
-    if (isset($_POST['id'])) {
-        $sql = "UPDATE news SET title='".$_POST[title]."', content='".$_POST[content]."' WHERE id=".$_POST[id];
+    if (isset($_POST['title'])) {
+        $sql = "INSERT INTO news (title,content) VALUES ('".$_POST[title]."','".$_POST[content]."')";
         $result = $connection->query($sql);
+        echo mysqli_error($connection);
         echo "<div class=\"alert alert-success\" role=\"alert\">
             Saved successfully.
-      </div>";
+        </div>";
+        echo("<script>location.href='index.php'</script>");
     }
 
-	$sql = "SELECT id, title, content FROM news WHERE id=".$_GET[id];
-	$result = $connection->query($sql);
 
-
-	if ($result->num_rows > 0) {
-		// output data of each row to show news
-		while($row = $result->fetch_assoc()) {
-			
-            echo "<div class=\"container\">
-            <div class=\"mt-3\">
-            <h1>Edit</h1>
-            </div>
-			<form method=\"post\" action=\"edit.php?id=".$_GET[id]."\">
-				<input type=\"hidden\"  class=\"form-control\" name=\"id\" value=\"". $row["id"]. "\"><br/>
-				<label for=\"title\">Title</label>
-				<input type=\"text\"  class=\"form-control\" name=\"title\" value=\"". $row["title"]. "\"><br/>
-				<label for=\"contant\">Content</label>
-				<textarea id=\"mytextarea\" name=\"content\" class=\"form-control\" rows=\"16\">". $row["content"]. "</textarea><br/>
-				<input type=\"submit\" class=\"btn btn-primary\" name=\"submit\" value=\"Save\"><br/><br/>
-            </form>
-			</div>";
+    
+    echo "<div class=\"container\">
+    <div class=\"mt-3\">
+    <h1>Edit</h1>
+    </div>
+    <form method=\"post\" action=\"add.php\">
+        <label for=\"title\">Title</label>
+        <input type=\"text\"  class=\"form-control\" name=\"title\" ><br/>
+        <label for=\"contant\">Content</label>
+        <textarea  id=\"mytextarea\" name=\"content\" class=\"form-control\" rows=\"16\"></textarea><br/>
+        <input type=\"submit\" class=\"btn btn-primary\" name=\"submit\" value=\"Save\"><br/><br/>
+    </form>
+    </div>";
  
-		}
-	} else {
-		echo "0 news are available";
-	}
+		
 
 	$connection->close();
 ?> 
