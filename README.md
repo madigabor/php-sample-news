@@ -13,7 +13,7 @@ Never use in production, this a sample code only.
 ![index.php running in a Browser](intro.png)
 
 
-# How to use with Docker-composes
+# How to use with Docker-compose
 
  1. Open terminal in root folder of the project
  2. run "docker-compose build" to create the containers
