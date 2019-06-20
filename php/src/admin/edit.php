@@ -37,7 +37,7 @@
 	
 
     if (isset($_POST['id'])) {
-        $sql = "UPDATE news SET title='".$_POST[title]."', content='".$_POST[content]."' WHERE id=".$_POST[id];
+        $sql = "UPDATE news SET title='".addslashes($_POST[title])."', content='".addslashes($_POST[content])."' WHERE id=".$_POST[id];
         $result = $connection->query($sql);
         echo "<div class=\"alert alert-success\" role=\"alert\">
             Saved successfully.

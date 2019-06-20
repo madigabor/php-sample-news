@@ -37,13 +37,13 @@
     
 
     if (isset($_POST['title'])) {
-        $sql = "INSERT INTO news (title,content) VALUES ('".$_POST[title]."','".$_POST[content]."')";
+        $sql = "INSERT INTO news (title,content) VALUES ('".addslashes($_POST[title])."','".addslashes($_POST[content])."')";
         $result = $connection->query($sql);
         echo mysqli_error($connection);
         echo "<div class=\"alert alert-success\" role=\"alert\">
             Saved successfully.
         </div>";
-        echo("<script>location.href='index.php'</script>");
+        //echo("<script>location.href='index.php'</script>");
     }
 
 
