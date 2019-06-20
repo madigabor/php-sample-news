@@ -19,5 +19,5 @@ Never use in production, this a sample code only.
  2. run "docker-compose build" to create the containers
  3. run "docker-compose up -d" to run the containers
  4. Open a browser with URL: "localhost" (If you get a Warning message, wait while MySQL starts.)
- 5. Admin is available at "localhost/admin"
+ 5. Admin is available at "localhost/admin" - user: admin, password: admin
 
