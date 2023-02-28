@@ -11,6 +11,17 @@
 	  <a class="navbar-brand" href="#">
 		Latest News
 	  </a>
+
+	  <div id="weather">
+	  </div>
+
+	  <script>
+		fetch('https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true')
+		.then(response => response.json())
+		.then(text => {
+			document.getElementById("weather").append(text.current_weather.temperature+" °C")
+		})
+	  </script>
 	</nav>
 <?php
 	// Config parameters
